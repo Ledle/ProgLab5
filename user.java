@@ -22,7 +22,12 @@ public class user{
 		this.password = password;
 	}
 	public void changegroup(group gr){
-		this.grp = gr;
+		if(grp!=gr){
+			this.grp = gr;
+			if (gr!=null){
+				gr.adduser(this);
+			}
+		}
 	}
 	public void show(){
 	System.out.println("User: " + this.name);

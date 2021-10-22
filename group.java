@@ -14,18 +14,31 @@ public class group{
 		this.disciplines = new ArrayList<discipline>();
 	}
 	public int adddisc(discipline disc){
-		disciplines.add(disc);
+		if(this.disciplines.indexOf(disc)==-1){
+			disciplines.add(disc);
+			disc.addgroup(this);
+		}
 		return disciplines.size() - 1;
 	}
 	public int adduser(user student){
-		students.add(student);
-		return students.size() - 1;
-		
+		if (students.indexOf(student)!=-1){
+			students.add(student);
+			student.changegroup(this);
+		}
+		return students.indexOf(student);
 	}
 	public void rename(String name){
 		this.name = name;
 	}
-	public void deldisc(String name){}
+	public void deldisc(String name){
+		for (int i=0;i<disciplines.size();i++){
+			if (disciplines.get(i).getname() == name){
+				disciplines.get(i).delgroup(this.name);
+				disciplines.remove(i);
+				break;
+			}
+		}
+	}
 	public void delstudent(int login){
 		for (int i=0;i<students.size();i++){
 			if (students.get(i).getlogin() == login){
