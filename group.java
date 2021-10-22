@@ -21,7 +21,7 @@ public class group{
 		return disciplines.size() - 1;
 	}
 	public int adduser(user student){
-		if (students.indexOf(student)!=-1){
+		if (students.indexOf(student)==-1){
 			students.add(student);
 			student.changegroup(this);
 		}
