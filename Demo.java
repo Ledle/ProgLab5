@@ -7,5 +7,7 @@ public class Demo{
 		question q2 = new question("2+2*2?","6",10);
 		test math = new test(new question[] {q1,q2},"Math");
 		discipline progr = new discipline("Programming");
+		PI.adduser(serg);
+		progr.addtest(math);
 	}
 }

@@ -31,9 +31,9 @@ public class user{
 	}
 	public void show(){
 	System.out.println("User: " + this.name);
-	//if (this.grp != null) {
-		//System.out.println(" Group: ", this.grp->getname().c_str());
-	//}
+	if (this.grp != null) {
+		System.out.println(" Group: " + this.grp.getname());
+	}
 	System.out.println(" Login: " + this.login + " Password: "+ this.password);
 	}
 	public void input(){
