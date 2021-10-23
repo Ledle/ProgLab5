@@ -49,8 +49,9 @@ public class discipline{
 	public void delgroup(String name){
 		for (int i=0;i<groups.size();i++){
 			if (groups.get(i).getname() == name){
-				groups.get(i).deldisc(this.name);
+				group g = groups.get(i);
 				groups.remove(i);
+				g.deldisc(this.name);
 				break;
 			}
 		}

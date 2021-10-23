@@ -33,17 +33,19 @@ public class group{
 	public void deldisc(String name){
 		for (int i=0;i<disciplines.size();i++){
 			if (disciplines.get(i).getname() == name){
-				disciplines.get(i).delgroup(this.name);
+				discipline d = disciplines.get(i);
 				disciplines.remove(i);
+				d.delgroup(this.name);
 				break;
 			}
 		}
 	}
-	public void delstudent(int login){
+	public void deluser(int login){
 		for (int i=0;i<students.size();i++){
 			if (students.get(i).getlogin() == login){
-				students.get(i).changegroup(null);
+				user s = students.get(i);
 				students.remove(i);
+				s.delgroup();
 				break;
 			}
 		}

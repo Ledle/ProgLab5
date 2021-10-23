@@ -14,5 +14,13 @@ public class Demo{
 		PI.getstudent(0).show();
 		PI.show();
 		progr.show();
+		user dima = new user(113,454,"Dmitry");
+		PI.deluser(111);
+		PI.show();
+		PI.adduser(dima);
+		PI.show();
+		PI.adduser(serg);
+		PI.show();
+		progr.delgroup(PI.getname());
 	}
 }

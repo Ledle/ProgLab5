@@ -21,12 +21,19 @@ public class user{
 	public void changepass(int password){
 		this.password = password;
 	}
+	public void delgroup(){
+		if (this.grp!=null){
+			this.grp.deluser(this.login);
+		}
+		this.grp = null;
+	}
 	public void changegroup(group gr){
 		if(grp!=gr){
-			this.grp = gr;
-			if (gr!=null){
-				gr.adduser(this);
+			gr.adduser(this);
+			if (this.grp != null){
+				this.grp.deluser(this.login);
 			}
+			this.grp = gr;
 		}
 	}
 	public void show(){
