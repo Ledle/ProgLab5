@@ -12,7 +12,7 @@ public class user{
 	public user(int login,int password, String name){
 		this.login = login;
 		this.password = password;
-		this.name = name;
+		this.name = name.substring(0,1).toUpperCase().concat(name.substring(1));//делает первую букву заглавной
 		this.grp = null;
 	}
 	public void rename(String name){

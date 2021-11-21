@@ -16,7 +16,7 @@ public class group{
 	public int adddisc(discipline disc){
 		if(this.disciplines.indexOf(disc)==-1){
 			disciplines.add(disc);
-			disc.addgroup(this);
+			disc.addgroup(this);//добавление в дисциплину данного объекта
 		}
 		return disciplines.size() - 1;
 	}
