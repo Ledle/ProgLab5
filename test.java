@@ -2,22 +2,19 @@ import java.util.*;
 public class test{
 	private String name;
 	private question[] quest;//массив объектов quest
-	private ArrayList<int[]> result;
+	private Result res;
 	public test(){
 		this.name = "";
 		this.quest = new question[1];
-		this.result = new ArrayList<int[]>();
+		this.res = new Result();
 	}
 	public test(question[] questions, String name){
 		this.name = name;
 		this.quest = questions;
-		this.result = new ArrayList<int[]>();
+		this.res = new Result();
 	}
-	public void addresult(int login, int res){
-		int[] b = new int[2];
-		b[0]=login;
-		b[1]=res;
-		result.add(b);
+	public void addresult(int login, int result){
+		res.add(login,result);
 	}
 	public void rename(String name){
 		this.name = name;
@@ -48,16 +45,23 @@ public class test{
 		return this.quest[n];
 	}
 	public int getresult(int login){
-		int n = -1;
-		for (int i = 0;i<result.size();i++){
-			if (result.get(i)[0] == login){
-				n = i;
-				break;
-			}
+		return res.get(login);
+	}
+	private class Result{
+		private ArrayList<Integer> results;
+		private ArrayList<Integer> logins;
+		public Result(){
+			this.results = new ArrayList<Integer>();
+			this.logins = new ArrayList<Integer>();
 		}
-		if (n==-1){
-			return 0;
+		public void add(int login, int res){
+			this.results.add(res);
+			this.logins.add(login);
 		}
-		return result.get(n)[1];
+		public int get(int login){
+			int n = logins.indexOf(login);
+			if (n==-1){return n;}
+			return results.get(n);
+		}
 	}
 }
