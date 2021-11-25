@@ -2,16 +2,22 @@ import java.util.*;
 public class group{
 	private ArrayList<user> students;
 	private ArrayList<discipline> disciplines;
+	private static ArrayList<group> groups = new ArrayList<group>();
+	public static ArrayList<group> list(){
+		return new ArrayList<group>(groups);
+	}
 	private String name;
 	public group(){
 		this.name = "";
 		this.students = new ArrayList<user>();
 		this.disciplines = new ArrayList<discipline>();
+		groups.add(this);
 	}
 	public group(String name){
 		this.name = name;
 		this.students = new ArrayList<user>();
 		this.disciplines = new ArrayList<discipline>();
+		groups.add(this);
 	}
 	public int adddisc(discipline disc){
 		if(this.disciplines.indexOf(disc)==-1){

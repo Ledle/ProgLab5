@@ -1,17 +1,24 @@
+import java.sql.Array;
 import java.util.*;
 public class discipline{
 	private String name;
 	private ArrayList<test> tests;
 	private ArrayList<group> groups;
+	private static ArrayList<discipline> disciplines = new ArrayList<discipline>();//список всех дисциплин
+	public static ArrayList<discipline> list(){//получение копии списка всех дисциплин
+		return new ArrayList<discipline>(disciplines);
+	}
 	public discipline(){
 		this.name = "";
 		this.tests = new ArrayList<test>();
 		this.groups = new ArrayList<group>();
+		disciplines.add(this);//добавление этой дисциплины в общий список
 	}
 	public discipline(String name){
 		this.name = name;
 		this.tests = new ArrayList<test>();
 		this.groups = new ArrayList<group>();
+		disciplines.add(this);//добавление этой дисциплины в общий список
 	}
 	public String getname(){
 		return this.name;
