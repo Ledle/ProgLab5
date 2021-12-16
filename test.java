@@ -8,6 +8,11 @@ public class test{
 		this.quest = new question[1];
 		this.res = new Result();
 	}
+	public test(String name){
+		this.name = name;
+		this.quest = new question[1];
+		this.res = new Result();
+	}
 	public test(question[] questions, String name){
 		this.name = name;
 		this.quest = questions;

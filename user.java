@@ -9,6 +9,12 @@ public class user{
 		this.login = 0;
 		this.password = 0;
 	}
+	public user(String name){
+		this.name = name;
+		this.grp = null;
+		this.login = 0;
+		this.password = 0;
+	}
 	public user(int login,int password, String name){
 		this.login = login;
 		this.password = password;

@@ -6,6 +6,11 @@ public class question{
 		this.answer = "";
 		this.value = 0;
 	}
+	public question(String text){
+		this.text = text;
+		this.answer = "";
+		this.value = 0;
+	}
 	public question(String text, String answer, int value){
 		this.text = text;
 		this.answer = answer;

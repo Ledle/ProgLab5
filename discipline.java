@@ -20,6 +20,11 @@ public class discipline{
 		this.groups = new ArrayList<group>();
 		disciplines.add(this);//добавление этой дисциплины в общий список
 	}
+	public discipline(String name, test[] tests, group[] groups) {
+		this.name = name;
+		this.tests = new ArrayList<>(Arrays.asList(tests));
+		this.groups = new ArrayList<>(Arrays.asList(groups));
+	}
 	public String getname(){
 		return this.name;
 	}

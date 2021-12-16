@@ -11,13 +11,18 @@ public class group{
 		this.name = "";
 		this.students = new ArrayList<user>();
 		this.disciplines = new ArrayList<discipline>();
-		groups.add(this);
+		groups.add(this);//добавление этой группы в общий список
 	}
 	public group(String name){
 		this.name = name;
 		this.students = new ArrayList<user>();
 		this.disciplines = new ArrayList<discipline>();
-		groups.add(this);
+		groups.add(this);//добавление этой группы в общий список
+	}
+	public group(String name, discipline[] disc, user[] students) {
+		this.name = name;
+		this.disciplines = new ArrayList<>(Arrays.asList(disc));
+		this.students = new ArrayList<>(Arrays.asList(students));
 	}
 	public int adddisc(discipline disc){
 		if(this.disciplines.indexOf(disc)==-1){
