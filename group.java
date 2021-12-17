@@ -23,6 +23,7 @@ public class group{
 		this.name = name;
 		this.disciplines = new ArrayList<>(Arrays.asList(disc));
 		this.students = new ArrayList<>(Arrays.asList(students));
+		groups.add(this);//добавление этой группы в общий список
 	}
 	public int adddisc(discipline disc){
 		if(this.disciplines.indexOf(disc)==-1){

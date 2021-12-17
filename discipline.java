@@ -24,6 +24,7 @@ public class discipline{
 		this.name = name;
 		this.tests = new ArrayList<>(Arrays.asList(tests));
 		this.groups = new ArrayList<>(Arrays.asList(groups));
+		disciplines.add(this);//добавление этой дисциплины в общий список
 	}
 	public String getname(){
 		return this.name;

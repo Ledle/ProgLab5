@@ -4,7 +4,7 @@ public class Demo{
         question q0 = new question();
         question q1 = new question("2+20");
         question qall = new question("2+2", "4", 15);
-        question[] qs = { new question("First"), new question("Second"), new question("Third") };
+        question[] qs = { new question("First"), new question("Second"), new question("Third") };//инициализация массива конструктором
         test t0 = new test();
         test t1 = new test("NameOnly");
         test tall = new test(qs,"AllParms");
@@ -18,7 +18,7 @@ public class Demo{
         discipline[] dscps = { d0, d1};
         group g0 = new group();
         group g1 = new group("OnlyName");
-        group gall = new group("AllParms");
+        group gall = new group("AllParms",dscps,usrs);
         group[] groups = { g0, g1, gall };
         discipline dall = new discipline("AllParms",tsts,groups);
 	}
