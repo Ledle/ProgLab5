@@ -5,12 +5,12 @@ public class test{
 	private Result res;
 	public test(){
 		this.name = "";
-		this.quest = new question[1];
+		this.quest = null;
 		this.res = new Result();
 	}
 	public test(String name){
 		this.name = name;
-		this.quest = new question[1];
+		this.quest = null;
 		this.res = new Result();
 	}
 	public test(question[] questions, String name){
@@ -29,9 +29,11 @@ public class test{
 	}
 	public void show(){
 		System.out.println("Test "+name+":");
-		for(int i=0;i<quest.length;i++){
-			System.out.println("Question "+i+") "+quest[i].gettext());
-			System.out.println("Answer: "+quest[i].getanswer());
+		if(quest != null) {
+			for (int i = 0; i < quest.length; i++) {
+				System.out.println("Question " + i + ") " + quest[i].gettext());
+				System.out.println("Answer: " + quest[i].getanswer());
+			}
 		}
 	}
 	public void input(){

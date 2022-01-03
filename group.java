@@ -26,6 +26,9 @@ public class group{
 		groups.add(this);//добавление этой группы в общий список
 	}
 	public int adddisc(discipline disc){
+		if(disc == null){
+			throw new NullPointerException();
+		}
 		if(this.disciplines.indexOf(disc)==-1){
 			disciplines.add(disc);
 			disc.addgroup(this);//добавление в дисциплину данного объекта
@@ -33,6 +36,9 @@ public class group{
 		return disciplines.size() - 1;
 	}
 	public int adduser(user student){
+		if(student == null){
+			throw new NullPointerException();
+		}
 		if (students.indexOf(student)==-1){
 			students.add(student);
 			student.changegroup(this);

@@ -36,6 +36,9 @@ public class discipline{
 		return groups.get(n);
 	}
 	public int addgroup(group gr){
+		if(gr == null){
+			throw new NullPointerException();
+		}
 		if(this.groups.indexOf(gr)==-1){
 			this.groups.add(gr);
 			gr.adddisc(this);
@@ -43,6 +46,9 @@ public class discipline{
 		return groups.size() - 1;
 	}
 	public int addtest(test tst){
+		if(tst == null){
+			throw new NullPointerException();
+		}
 		if(this.tests.indexOf(tst)==-1){
 			this.tests.add(tst);
 		}
