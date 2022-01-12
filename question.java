@@ -44,4 +44,12 @@ public class question{
 		System.out.print("Enter scores: ");
 		this.value = sc.nextInt();
 	}
+	public String toString()
+	{
+		String st;
+		st = "Question: " + this.text;
+		st += "Answer: " + this.answer;
+		st += "(" + this.value + ")";
+		return st;
+	}
 }

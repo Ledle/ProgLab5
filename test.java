@@ -1,5 +1,5 @@
 import java.util.*;
-public class test{
+public class test implements Interface{
 	private String name;
 	private question[] quest;//массив объектов quest
 	private Result res;
@@ -48,8 +48,9 @@ public class test{
 			quest[i].input();
 		}
 	}
-	public question getquest(int n){
-		return this.quest[n];
+	public question[] getquest(){
+		if (quest == null){ return null;}
+		return quest.clone();
 	}
 	public int getresult(int login){
 		return res.get(login);
@@ -69,6 +70,17 @@ public class test{
 			int n = logins.indexOf(login);
 			if (n==-1){return n;}
 			return results.get(n);
+		}
+		public String toString()
+		{
+			String st;
+			st=("Test " + name + ":");
+			for (int i = 0; i < quest.length; i++)
+			{
+				st+=("Question " + i + ")" + quest[i].gettext());
+				st+=("Answer: " + quest[i].getanswer());
+			}
+			return st;
 		}
 	}
 }

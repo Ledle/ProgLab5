@@ -1,13 +1,10 @@
 import java.sql.Array;
 import java.util.*;
-public class discipline{
+public class discipline implements Cloneable{
 	private String name;
 	private ArrayList<test> tests;
 	private ArrayList<group> groups;
 	private static ArrayList<discipline> disciplines = new ArrayList<discipline>();//список всех дисциплин
-	public static ArrayList<discipline> list(){//получение копии списка всех дисциплин
-		return new ArrayList<discipline>(disciplines);
-	}
 	public discipline(){
 		this.name = "";
 		this.tests = new ArrayList<test>();
@@ -91,5 +88,51 @@ public class discipline{
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter name of discipline: ");
 		this.name = sc.nextLine();
+	}
+	public String toString() {
+		String st;
+		st = "Discipline " + this.name + ":";
+		if (this.groups.size() > 0)
+		{
+			st+=" Groups:";
+			for (int i = 0; i < this.groups.size(); i++)
+			{
+				st+="  " + i + ") " + this.groups.get(i).getname();
+			}
+		}
+		if (this.tests.size() >= 0)
+		{
+			st+=" Tests: " + this.tests.size();
+		}
+		return st;
+	}
+	public Object Clone()//глубокое клонирование
+	{
+		ArrayList<test> tsts = new ArrayList<test>();
+		ArrayList<question> qsts = new ArrayList<question>();
+		question[] quests;
+		for (test t : tests)
+		{
+			if (t.getquest() != null) {
+				for (question q : t.getquest()) {
+					qsts.add(new question(q.gettext(), q.getanswer(), q.getvalue()));
+				}
+				quests = new question[qsts.size()];
+				qsts.toArray(quests);
+				tsts.add(new test(quests, t.getname()));
+				qsts.clear();
+			}
+		}
+		group[] grps = new group[groups.size()];
+		for (int i = 0; i < groups.size(); i++)
+		{
+			grps[i] = (group)groups.get(i).Clone();
+		}
+		test[] tests = new test[tsts.size()];
+		tsts.toArray(tests);
+		return new discipline(name, tests, grps);
+	}
+	public static ArrayList<discipline> getlist(){
+		return new ArrayList<discipline>(disciplines);
 	}
 }

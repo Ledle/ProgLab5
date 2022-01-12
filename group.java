@@ -1,25 +1,22 @@
 import java.util.*;
-public class group{
-	private ArrayList<user> students;
+public class group implements Cloneable{
+	private ArrayList<Student> students;
 	private ArrayList<discipline> disciplines;
 	private static ArrayList<group> groups = new ArrayList<group>();
-	public static ArrayList<group> list(){
-		return new ArrayList<group>(groups);
-	}
 	private String name;
 	public group(){
 		this.name = "";
-		this.students = new ArrayList<user>();
+		this.students = new ArrayList<Student>();
 		this.disciplines = new ArrayList<discipline>();
 		groups.add(this);//добавление этой группы в общий список
 	}
 	public group(String name){
 		this.name = name;
-		this.students = new ArrayList<user>();
+		this.students = new ArrayList<Student>();
 		this.disciplines = new ArrayList<discipline>();
 		groups.add(this);//добавление этой группы в общий список
 	}
-	public group(String name, discipline[] disc, user[] students) {
+	public group(String name, discipline[] disc, Student[] students) {
 		this.name = name;
 		this.disciplines = new ArrayList<>(Arrays.asList(disc));
 		this.students = new ArrayList<>(Arrays.asList(students));
@@ -35,7 +32,7 @@ public class group{
 		}
 		return disciplines.size() - 1;
 	}
-	public int adduser(user student){
+	public int adduser(Student student){
 		if(student == null){
 			throw new NullPointerException();
 		}
@@ -61,7 +58,7 @@ public class group{
 	public void deluser(int login){
 		for (int i=0;i<students.size();i++){
 			if (students.get(i).getlogin() == login){
-				user s = students.get(i);
+				Student s = students.get(i);
 				students.remove(i);
 				s.delgroup();
 				break;
@@ -88,16 +85,44 @@ public class group{
 		this.name = sc.nextLine();
 		System.out.print("Enter number of students: ");
 		int n = sc.nextInt();
-		this.students = new ArrayList<user>(n);
+		this.students = new ArrayList<Student>(n);
 		for (int i = 0;i<n;i++){
-			this.students.add(new user());
+			this.students.add(new Student());
 			this.students.get(i).input();
 		}
 	}
 	public String getname(){
 		return this.name;
 	}
-	public user getstudent(int n){
+	public Student getstudent(int n){
 		return this.students.get(n);
+	}
+	public String toString() {
+		String st;
+		st = "Group " + this.name;
+		if (this.students.size() > 0)
+		{
+			for (int i = 0; i < this.students.size(); i++)
+			{
+				st+=" " + i + ") Name: " + this.students.get(i).getname() + " Login: " + this.students.get(i).getlogin();
+			}
+		}
+		if (this.disciplines.size() > 0)
+		{
+			st+=" Disciplines:";
+			for (int i = 0; i < this.disciplines.size(); i++)
+			{
+				st+="  " + i + ") Discipline: " + this.disciplines.get(i).getname();
+			}
+		}
+		return st;
+	}
+	public Object Clone()//поверхностное клонирование
+	{
+		discipline[] d = new discipline[disciplines.size()];
+		disciplines.toArray(d);
+		Student[] s = new Student[students.size()];
+		students.toArray(s);
+		return new group(name,d,s);
 	}
 }
